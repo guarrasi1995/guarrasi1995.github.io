@@ -19,6 +19,6 @@ social: true  # includes social icons at the bottom of the page
 I am Valerio Guarrasi, an Italian Data Scientist who has lived in South Korea, the United States and Italy, defining my multicultural background and education. 
 
 My attraction towards the technological world, its fast-changing nature and how it affects the dynamics of our reality, has determined my academic path. 
-I completed my Master’s Degree in Data Science at Sapienza University in Rome after obtaining my Bachelor’s Degree in Management Engineering.
+I completed my PhD and Master’s Degree in Data Science at Sapienza University in Rome after obtaining my Bachelor’s Degree in Management Engineering.
 
-Currently, I am completing my PhD in Data Science at Sapienza University, focusing on the optimization of multimodal deep learning.
+Currently, I am Assistant Professor at Università Campus Bio-Medico di Roma, focusing on the optimization of multimodal deep learning for bio-medical applications.
