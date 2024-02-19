@@ -8,8 +8,8 @@ profile:
   align: right
   image: prof_pic.jpg
   address: >
-    <p>Department of Computer, Control, and Management Engineering Antonio Ruberti</p>
-    <p>Via Ariosto, 25, 00185 Rome RM, Italy</p>
+    <p>Unit of Computer Systems and Bioinformatics, Department of Engineering, University Campus Bio-Medico of Rome</p>
+    <p>Via Álvaro del Portillo, 21, 00128 Rome RM, Italy</p>
 
 news: false  # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
