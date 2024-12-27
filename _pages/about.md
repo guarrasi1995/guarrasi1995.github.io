@@ -16,8 +16,8 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am Valerio Guarrasi, a passionate Italian Data Scientist whose career and personal journey have been enriched by living in South Korea, the United States, Sweden and Italy. This unique blend of experiences has shaped my multicultural perspective and academic path.
+Hello! I am **Valerio Guarrasi**, Assistant Professor in Data Science at **Università Campus Bio-Medico of Rome**. My research focuses on **multimodal deep learning** and **generative AI**, with the aim of developing innovative methodologies for biomedical applications. I am particularly interested in how AI can support healthcare by improving diagnostics and patient outcomes.
 
-Driven by a fascination with the ever-evolving technological landscape and its profound impact on our societal reality, I have pursued an academic career that mirrors this interest. I earned both my PhD and Master's Degree in Data Science from Sapienza University of Rome, following a Bachelor's Degree in Management Engineering.
+My academic and professional journey has been shaped by experiences in **South Korea**, the **United States**, **Sweden**, and **Italy**, giving me a broad, multicultural perspective that informs my approach to research and collaboration. I hold a **PhD** and **Master’s Degree in Data Science** from **Sapienza University of Rome**, as well as a **Bachelor’s Degree in Management Engineering**. In addition to my research, I am committed to mentoring students and fostering collaborative projects.
 
-Currently, I hold the position of Assistant Professor at Università Campus Bio-Medico of Rome. My research is primarily focused on enhancing multimodal deep learning techniques for biomedical applications, a field where I aim to contribute significantly by leveraging my diverse background and expertise.
+I invite you to explore my work and connect if you share an interest in advancing AI for healthcare or innovative applications in data science.
