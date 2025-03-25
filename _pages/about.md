@@ -2,16 +2,15 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Unit of Computer Systems and Bioinformatics, Department of Engineering, Università Campus Bio-Medico di Roma</a>. Via Álvaro del Portillo, 21, 00128 Rome RM, Italy
+subtitle: #<a href='#'> Affiliation</a>. Address, Motto
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Unit of Computer Systems and Bioinformatics, Department of Engineering, Università Campus Bio-Medico di Roma</p>
+    <p>Via Álvaro del Portillo, 21, 00128 Rome RM, Italy</p>
 
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
