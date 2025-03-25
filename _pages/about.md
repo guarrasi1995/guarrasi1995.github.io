@@ -21,4 +21,4 @@ Hello! I am **Valerio Guarrasi**, Assistant Professor at **Università Campus Bi
 
 My academic and professional journey has been shaped by experiences in **South Korea**, the **United States**, **Sweden**, and **Italy**, giving me a broad, multicultural perspective that informs my approach to research and collaboration. I hold a **PhD** and **Master’s Degree in Data Science** from **Sapienza University of Rome**, as well as a **Bachelor’s Degree in Management Engineering**. In addition to my research, I am committed to mentoring students and fostering collaborative projects.
 
-I invite you to explore my work and connect if you share an interest in advancing AI for healthcare or develop novel methodologies in AI.
+I invite you to explore my work and connect if you share an interest in advancing AI for healthcare or developing novel methodologies in AI.
