@@ -22,53 +22,70 @@
         - Final Mark: Excellent cum laude
         - Thesis: “Multimodal Deep Learning for Medical Imaging”
         - Research Exchange: Department of Radiation Sciences, Umeå University
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+    - title: Master's Degree in Data Science
+      institution: Sapienza University of Rome, Italy
+      year: 2017-2019
       description:
-        - Description 1.
-        - Description 2.
+        - Final Mark - 110/110 cum laude - Honors Program
+        - Thesis - “Generalized Model for Temporal Motifs”
+        - Research Exchange - Department of Computer Science, University of New York, Buffalo
+    - title: Bachelor's Degree in Management Engineering
+      institution: Sapienza University of Rome, Italy
+      year: 2014-2027
+      description:
+        - Final Mark - 109/110
+    - title: Master's Degree in Piano
+      institution: Conservatoire Santa Cecilia, Rome, Italy
+      year: 2006-2016
+    - title: Technological Scientific High School Diploma
+      institution: High School V. Colonna, Rome, Italy
+      year: 2009-2014
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Assistant Professor
+      institution: Department of Engineering, Università Campus Bio-Medico di Roma, Italy
+      year: 2023 -
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Field - Computer Science and Computer Engineering (ING-INF/05)
+        - Research project - “Future Artificial Intelligence Research (FAIR)”
+    - title: PostDoc
+      institution: Department of Engineering, Università Campus Bio-Medico di Roma, Italy
+      year: 2023
       description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+        - Field - Computer Science and Computer Engineering (ING-INF/05)
+        - Research project - “Artificial intelligence for precision medicine”
+    - title: Research Assitant
+      institution: Department of Engineering, Università Campus Bio-Medico di Roma, Italy
+      year: 2022
       description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+        - Field - Computer Science and Computer Engineering (ING-INF/05)
+    - title: Lead Data Scientist
+      institution: GenomeUp, Rome, Italy
+      year: 2020 - 2022
+      description:
+        - Development of Machine Learning and Deep Learning methods to aid the research for hospitals and medical oriented research groups to solve real-world healthcare problems using medical imaging, genomics, and electronic health records data.
+    - title: Data Scientist
+      institution: IBM, Rome, Italy
+      year: 2019 - 2020
+      description:
+        - Development of Machine Learning and Deep Learning methods integrated in the Watson AI products to validate PoCs for new potential clients.
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2025
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
+        - Recipient of “Computing’s Top 30 Early Career Professionals for 2024”, IEEE Computer Society, 2024
+        - Awarded the Seal of Excellence following evaluation by an international panel of independent experts, recognizing it as a high-quality project proposal in a highly competitive selection process. Project Proposal - 101203747 - IDEA “AI-powered digital twin for next-generation lung cancer care”. Submitted under the HORIZON- MSCA-2024-PF-01-01 (MSCA Postdoctoral Fellowships 2024), European Commission Horizon Europe
+    - year: 2022
       items:
-        - Max Planck Medal
+        - Winner of the international competition - “Covid CXR Hackathon”, Bracco Imaging, Dubai Expo 2020
+    - year: 2021
+      items:
+        - Winner of the international competition - “AI against COVID-19 - Screening X-ray Images for COVID-19 Infection”, IEEE SIGHT, University of Waterloo
+    - year: 2018
+      items:
+        - Winner of the international competition - “Stats Under the Stars 4 Competition”, Società Italiana Statistica, Findomestic
+        - Winner of the university competition - “Quantitative Methods of Economic Analysis and Management”, Sapienza University of Rome
