@@ -2,25 +2,26 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
+      value: Valerio Guarrasi
+    - name: E-mail
+      value: valerio.guarrasi@unicampus.it
     - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+      value: 21th April 2025
+    - name: ORCID
+      value: 0000-0002-1860-7447
+    - name: Scopus
+      value: 57219750978
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: PhD in Data Science
+      institution: Sapienza University of Rome, Italy
+      year: 2019-2023
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
+        - Final Mark: Excellent cum laude
+        - Thesis: “Multimodal Deep Learning for Medical Imaging”
+        - Research Exchange: Department of Radiation Sciences, Umeå University
     - title: Federal teaching diploma
       institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
       year: 1900
@@ -61,13 +62,6 @@
       institution: University of Zurich, Zurich, Switzerland
       year: 1909 - 1911
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
 - title: Honors and Awards
   type: time_table
   contents:
@@ -78,20 +72,3 @@
     - year: 2029
       items:
         - Max Planck Medal
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
