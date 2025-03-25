@@ -7,11 +7,15 @@ nav: true
 nav_order: 6
 ---
 
-<h3 class="mt-4">2023-2024</h3>
+<h3 class="mt-4">Lecturer - National Tenure</h3>
 
-<h3 class="mt-4">2022-2023</h3>
+<h3 class="mt-4">Lecturer - Master's level II courses</h3>
 
-<h3 class="mt-4">2021-2022</h3>
+<h3 class="mt-4">Lecturer - Abroad</h3>
+
+<h3 class="mt-4">Lecturer - PhD Courses</h3>
+
+<h3 class="mt-4">Teacher Assistant</h3>
 
 <div class="card mt-3">
   <div class="p-3">
