@@ -2,24 +2,24 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: <a href='#'>Unit of Computer Systems and Bioinformatics, Department of Engineering, Università Campus Bio-Medico di Roma</a>. Via Álvaro del Portillo, 21, 00128 Rome RM, Italy
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+  #more_info: >
+    #<p>555 your office number</p>
+    #<p>123 your address street</p>
+    #<p>Your City, State 12345</p>
 
-news: true # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
+news: false # includes a list of news items
+selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hello! I am **Valerio Guarrasi**, Assistant Professor at **Università Campus Bio-Medico of Rome**. My research focuses on **multimodal deep learning** and **generative AI**, with the aim of developing innovative methodologies for biomedical applications. I am particularly interested in how AI can support healthcare by improving diagnostics and patient outcomes.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My academic and professional journey has been shaped by experiences in **South Korea**, the **United States**, **Sweden**, and **Italy**, giving me a broad, multicultural perspective that informs my approach to research and collaboration. I hold a **PhD** and **Master’s Degree in Data Science** from **Sapienza University of Rome**, as well as a **Bachelor’s Degree in Management Engineering**. In addition to my research, I am committed to mentoring students and fostering collaborative projects.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I invite you to explore my work and connect if you share an interest in advancing AI for healthcare or develop novel methodologies in AI.
