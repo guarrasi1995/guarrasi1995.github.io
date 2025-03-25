@@ -15,16 +15,30 @@ nav_order: 6
 
 <h3 class="mt-4">Lecturer - PhD Courses</h3>
 
+<div class="card mt-3">
+  <div class="p-3">
+    <div class="row">
+      <div class="col-sm-10">
+        <h5 class="font-weight-bold">Hands-on Machine Learning and Deep Learning</h5>
+      </div>
+    </div>
+     <h6 class="font-italic mt-2 mt-sm-0">National PhD in Artificial Intelligence, Health and Life Sciences area</h6>
+    </div>
+</div>
+
 <h3 class="mt-4">Teacher Assistant</h3>
+
+
+
 
 <div class="card mt-3">
   <div class="p-3">
     <div class="row">
       <div class="col-sm-10">
-        <h5 class="font-weight-bold">Programming</h5>
+        <h5 class="font-weight-bold">Hands-on Machine Learning and Deep Learning</h5>
       </div>
     </div>
-     <h6 class="font-italic mt-2 mt-sm-0">Teacher Assistant, University Campus-Bio-Medico of Rome</h6>
+     <h6 class="font-italic mt-2 mt-sm-0">National PhD in Artificial Intelligence, Health and Life Sciences area</h6>
      <ul class="card-text font-weight-light list-group list-group-flush">
        <p>
        Introduction to the employment of high-level programming languages in enterprise software development in data processing-oriented applications in a distributed environment.
