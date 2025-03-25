@@ -25,7 +25,7 @@ nav_order: 6
      <h6 class="font-italic mt-2 mt-sm-0">National PhD in Artificial Intelligence, Health and Life Sciences area</h6>
     </div>
     </div>
-     <h6 class="font-italic mt-2 mt-sm-0">2023/24, 2024/25</h6>
+     <h6 class="font-weight-light mt-2 mt-sm-0">2023/24, 2024/25</h6>
     </div>
 </div>
 
@@ -39,7 +39,7 @@ nav_order: 6
      <h6 class="font-italic mt-2 mt-sm-0">PhD course of Università Campus Bio-Medico di Roma</h6>
     </div>
     </div>
-      <h6 class="font-italic mt-2 mt-sm-0">2023/24, 2024/25</h6>
+      <h6 class="font-weight-light mt-2 mt-sm-0">2023/24, 2024/25</h6>
     </div>
 </div>
 
