@@ -77,13 +77,13 @@ nav_order: 6
   <div class="p-3">
     <div class="row">
       <div class="col-sm-10">
-        <h5 class="font-weight-bold">Fundamentals of Artificial Intelligence</h5>
+        <h5 class="font-weight-bold">Machine Learning and Big Data Analytics</h5>
       </div>
     </div>
-     <h6 class="font-italic mt-2 mt-sm-0">Master's degree in Intelligent Systems Engineering, Department of Engineering (9 CFU)</h6>
+     <h6 class="font-italic mt-2 mt-sm-0">Master's degree in Biomedical Engineering, Department of Engineering (6 CFU)</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
        <p>
-       2023/24
+       From 2023/24
        </p>
      </ul>
     </div>
@@ -93,13 +93,13 @@ nav_order: 6
   <div class="p-3">
     <div class="row">
       <div class="col-sm-10">
-        <h5 class="font-weight-bold">Machine Learning and Big Data Analytics</h5>
+        <h5 class="font-weight-bold">Fundamentals of Artificial Intelligence</h5>
       </div>
     </div>
-     <h6 class="font-italic mt-2 mt-sm-0">Master's degree in Biomedical Engineering, Department of Engineering (6 CFU)</h6>
+     <h6 class="font-italic mt-2 mt-sm-0">Master's degree in Intelligent Systems Engineering, Department of Engineering (9 CFU)</h6>
     <ul class="card-text font-weight-light list-group list-group-flush">
        <p>
-       From 2023/24
+       2023/24
        </p>
      </ul>
     </div>
