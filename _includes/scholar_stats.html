@@ -1,0 +1,32 @@
+{%- assign scholar_stats = site.data.scholar_metrics -%}
+{%- if scholar_stats.citations or scholar_stats.h_index or scholar_stats.i10_index -%}
+<section class="scholar-stats" aria-label="Google Scholar statistics">
+  <a class="scholar-stats__source" href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" target="_blank" rel="noopener noreferrer">
+    Google Scholar
+  </a>
+  <div class="scholar-stats__grid">
+    <div class="scholar-stats__item">
+      <span class="scholar-stats__value">{{ scholar_stats.citations }}</span>
+      <span class="scholar-stats__label">Citations</span>
+    </div>
+    <div class="scholar-stats__item">
+      <span class="scholar-stats__value">{{ scholar_stats.h_index }}</span>
+      <span class="scholar-stats__label">h-index</span>
+    </div>
+    <div class="scholar-stats__item">
+      <span class="scholar-stats__value">{{ scholar_stats.i10_index }}</span>
+      <span class="scholar-stats__label">i10-index</span>
+    </div>
+  </div>
+  {%- if scholar_stats.updated_at -%}
+  <p class="scholar-stats__updated">Updated {{ scholar_stats.updated_at }}</p>
+  {%- endif -%}
+</section>
+{%- else -%}
+<section class="scholar-stats scholar-stats--pending" aria-label="Google Scholar statistics">
+  <a class="scholar-stats__source" href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" target="_blank" rel="noopener noreferrer">
+    Google Scholar metrics
+  </a>
+  <p class="scholar-stats__updated">Automatic metrics will appear here after the Scholar updater runs.</p>
+</section>
+{%- endif -%}
