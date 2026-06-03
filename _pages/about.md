@@ -8,7 +8,7 @@ profile:
   align: right
   image: prof_pic.jpg
   address: >
-    <p><strong>Associate Professor</strong></p>
+    <p><strong>Associate Professor in Computer Science</strong></p>
     <p>Saint Camillus International University of Health and Medical Sciences (UniCamillus)</p>
 
 news: false  # includes a list of news items
