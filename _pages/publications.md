@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
-description: My collection of publications.
+description: Research outputs in multimodal learning, biomedical AI, medical imaging, and generative systems.
 years: [2026, 2025, 2024, 2023, 2022, 2021, 2020]
 nav: true
 nav_order: 3

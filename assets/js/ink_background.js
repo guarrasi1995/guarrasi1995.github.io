@@ -9,24 +9,55 @@
   canvas.setAttribute("aria-hidden", "true");
   document.body.insertBefore(canvas, document.body.firstChild);
 
-  const palette = [
-    { r: 187, g: 34, b: 28 },
-    { r: 217, g: 54, b: 48 },
-    { r: 23, g: 84, b: 209 },
-    { r: 45, g: 111, b: 255 },
-    { r: 116, g: 21, b: 19 }
+  const colors = {
+    red: { r: 229, g: 39, b: 48 },
+    redDeep: { r: 122, g: 22, b: 24 },
+    blue: { r: 38, g: 105, b: 255 },
+    blueDeep: { r: 17, g: 53, b: 154 },
+    ink: { r: 14, g: 18, b: 58 }
+  };
+
+  const codeTokens = [
+    "fuse(image, text)",
+    "attention",
+    "encoder",
+    "clinical_prior",
+    "MRI",
+    "ECG",
+    "tensor",
+    "backprop",
+    "synthetic_data",
+    "AUC",
+    "latent",
+    "diagnosis",
+    "grad",
+    "mask",
+    "health.ai",
+    "pipeline",
+    "evidence=True"
   ];
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   let width = 0;
   let height = 0;
   let dpr = 1;
-  let plumes = [];
-  let pointer = null;
-  let pointerFade = 0;
-  let frame = 0;
+  let nodes = [];
+  let tokens = [];
+  let pointer = { x: 0, y: 0, active: false, force: 0 };
+  let frameId = 0;
+  let tick = 0;
 
   function rgba(color, alpha) {
     return "rgba(" + color.r + ", " + color.g + ", " + color.b + ", " + alpha + ")";
+  }
+
+  function mix(a, b, amount) {
+    return {
+      r: Math.round(a.r + (b.r - a.r) * amount),
+      g: Math.round(a.g + (b.g - a.g) * amount),
+      b: Math.round(a.b + (b.b - a.b) * amount)
+    };
   }
 
   function mulberry32(seed) {
@@ -39,28 +70,38 @@
     };
   }
 
-  function createPlumes() {
-    const random = mulberry32(741513);
-    const count = width < 720 ? 18 : 30;
-    plumes = [];
+  function createField() {
+    const random = mulberry32(19951013 + Math.round(width));
+    const nodeCount = width < 720 ? 36 : 72;
+    const tokenCount = width < 720 ? 16 : 30;
 
-    for (let i = 0; i < count; i += 1) {
-      const color = palette[i % palette.length];
-      const leftBias = i % 3 === 0;
-      const x = leftBias
-        ? width * (0.05 + random() * 0.42)
-        : width * (0.36 + random() * 0.72);
-      const y = height * (-0.08 + random() * 1.2);
-      const size = Math.min(width, height) * (0.16 + random() * 0.28);
+    nodes = [];
+    tokens = [];
 
-      plumes.push({
-        x: x,
-        y: y,
-        rx: size * (0.86 + random() * 0.52),
-        ry: size * (0.62 + random() * 0.78),
-        angle: random() * Math.PI,
+    for (let i = 0; i < nodeCount; i += 1) {
+      const side = i % 2;
+      const color = side ? colors.blue : colors.red;
+      nodes.push({
+        x: random() * width,
+        y: random() * height,
+        ox: random() * width,
+        oy: random() * height,
+        vx: (random() - 0.5) * 0.22,
+        vy: (random() - 0.5) * 0.22,
+        radius: 1.6 + random() * 2.8,
         color: color,
-        alpha: 0.080 + random() * 0.075
+        phase: random() * Math.PI * 2
+      });
+    }
+
+    for (let i = 0; i < tokenCount; i += 1) {
+      tokens.push({
+        text: codeTokens[i % codeTokens.length],
+        x: random() * width,
+        y: random() * height,
+        speed: 0.10 + random() * 0.34,
+        alpha: 0.10 + random() * 0.16,
+        color: i % 3 === 0 ? colors.red : colors.blue
       });
     }
   }
@@ -75,102 +116,241 @@
     canvas.style.width = width + "px";
     canvas.style.height = height + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    createPlumes();
+
+    createField();
     draw();
   }
 
-  function drawPlume(plume, boost) {
-    const alpha = plume.alpha + boost * 0.06;
+  function drawGrid() {
+    const spacing = width < 720 ? 48 : 64;
 
     ctx.save();
-    ctx.globalCompositeOperation = "source-over";
-    ctx.filter = "blur(9px)";
-    ctx.translate(plume.x, plume.y);
-    ctx.rotate(plume.angle);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(38, 105, 255, 0.045)";
 
-    const gradient = ctx.createRadialGradient(0, 0, plume.rx * 0.08, 0, 0, plume.rx);
-    gradient.addColorStop(0, rgba(plume.color, alpha));
-    gradient.addColorStop(0.42, rgba(plume.color, alpha * 0.55));
-    gradient.addColorStop(1, rgba(plume.color, 0));
+    for (let x = (tick * 0.08) % spacing; x < width; x += spacing) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
+    }
 
-    ctx.fillStyle = gradient;
-    ctx.beginPath();
-    ctx.ellipse(0, 0, plume.rx, plume.ry, 0, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.strokeStyle = "rgba(229, 39, 48, 0.038)";
+    for (let y = (tick * 0.06) % spacing; y < height; y += spacing) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+      ctx.stroke();
+    }
 
-    ctx.lineCap = "round";
-    ctx.lineWidth = Math.max(12, Math.min(plume.rx, plume.ry) * 0.10);
-    ctx.strokeStyle = rgba(plume.color, alpha * 0.46);
-    ctx.beginPath();
-    ctx.moveTo(-plume.rx * 0.46, -plume.ry * 0.06);
-    ctx.bezierCurveTo(
-      -plume.rx * 0.12,
-      -plume.ry * 0.42,
-      plume.rx * 0.16,
-      plume.ry * 0.40,
-      plume.rx * 0.50,
-      plume.ry * 0.02
-    );
-    ctx.stroke();
     ctx.restore();
   }
 
-  function drawPointerBloom() {
-    if (!pointer || pointerFade <= 0.002) return;
-
-    const radius = Math.min(width, height) * 0.12;
-    const red = palette[1];
-    const blue = palette[3];
+  function drawInstitutionRibbons() {
+    const t = tick * 0.006;
 
     ctx.save();
     ctx.globalCompositeOperation = "source-over";
-    ctx.filter = "blur(8px)";
+    ctx.lineCap = "round";
 
-    const redGradient = ctx.createRadialGradient(pointer.x - radius * 0.14, pointer.y, radius * 0.04, pointer.x, pointer.y, radius);
-    redGradient.addColorStop(0, rgba(red, 0.17 * pointerFade));
-    redGradient.addColorStop(0.55, rgba(red, 0.070 * pointerFade));
-    redGradient.addColorStop(1, rgba(red, 0));
-    ctx.fillStyle = redGradient;
+    ctx.lineWidth = Math.max(52, width * 0.055);
+    ctx.strokeStyle = rgba(colors.red, 0.12);
     ctx.beginPath();
-    ctx.ellipse(pointer.x - radius * 0.10, pointer.y, radius * 1.08, radius * 0.70, -0.18, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.moveTo(-width * 0.08, height * (0.28 + Math.sin(t) * 0.02));
+    ctx.bezierCurveTo(
+      width * 0.22,
+      height * 0.02,
+      width * 0.52,
+      height * 0.58,
+      width * 1.08,
+      height * 0.18
+    );
+    ctx.stroke();
 
-    const blueGradient = ctx.createRadialGradient(pointer.x + radius * 0.12, pointer.y + radius * 0.08, radius * 0.04, pointer.x, pointer.y, radius * 1.06);
-    blueGradient.addColorStop(0, rgba(blue, 0.16 * pointerFade));
-    blueGradient.addColorStop(0.50, rgba(blue, 0.066 * pointerFade));
-    blueGradient.addColorStop(1, rgba(blue, 0));
-    ctx.fillStyle = blueGradient;
+    ctx.lineWidth = Math.max(58, width * 0.062);
+    ctx.strokeStyle = rgba(colors.blue, 0.13);
     ctx.beginPath();
-    ctx.ellipse(pointer.x + radius * 0.10, pointer.y + radius * 0.08, radius * 0.96, radius * 0.76, 0.34, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.moveTo(-width * 0.10, height * (0.78 + Math.cos(t) * 0.02));
+    ctx.bezierCurveTo(
+      width * 0.26,
+      height * 0.96,
+      width * 0.60,
+      height * 0.20,
+      width * 1.12,
+      height * 0.72
+    );
+    ctx.stroke();
 
+    ctx.restore();
+  }
+
+  function updateNodes() {
+    const drift = reduceMotion.matches ? 0 : 1;
+
+    for (let i = 0; i < nodes.length; i += 1) {
+      const node = nodes[i];
+      const orbitX = Math.cos(tick * 0.003 + node.phase) * 0.22 * drift;
+      const orbitY = Math.sin(tick * 0.003 + node.phase) * 0.22 * drift;
+
+      node.x += node.vx * drift + orbitX;
+      node.y += node.vy * drift + orbitY;
+
+      if (pointer.active && pointer.force > 0.01) {
+        const dx = node.x - pointer.x;
+        const dy = node.y - pointer.y;
+        const dist = Math.max(1, Math.hypot(dx, dy));
+        const push = Math.max(0, 1 - dist / 280) * pointer.force;
+        node.x += (dx / dist) * push * 2.8;
+        node.y += (dy / dist) * push * 2.8;
+      }
+
+      if (node.x < -40) node.x = width + 40;
+      if (node.x > width + 40) node.x = -40;
+      if (node.y < -40) node.y = height + 40;
+      if (node.y > height + 40) node.y = -40;
+    }
+
+    pointer.force *= 0.92;
+  }
+
+  function drawEdges() {
+    const threshold = width < 720 ? 118 : 156;
+
+    ctx.save();
+    ctx.lineWidth = 1;
+
+    for (let i = 0; i < nodes.length; i += 1) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const b = nodes[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist < threshold) {
+          const alpha = (1 - dist / threshold) * 0.18;
+          const color = mix(a.color, b.color, 0.5);
+          ctx.strokeStyle = rgba(color, alpha);
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    ctx.restore();
+  }
+
+  function drawNodes() {
+    ctx.save();
+
+    for (let i = 0; i < nodes.length; i += 1) {
+      const node = nodes[i];
+      const glow = pointer.active
+        ? Math.max(0, 1 - Math.hypot(node.x - pointer.x, node.y - pointer.y) / 240) * pointer.force
+        : 0;
+
+      ctx.fillStyle = rgba(node.color, 0.42 + glow * 0.42);
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius + glow * 2.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (glow > 0.04) {
+        ctx.strokeStyle = rgba(node.color, glow * 0.34);
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius + 9 + glow * 10, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
+
+    ctx.restore();
+  }
+
+  function drawTokens() {
+    ctx.save();
+    ctx.font = width < 720 ? "11px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" : "12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+    ctx.textBaseline = "middle";
+
+    for (let i = 0; i < tokens.length; i += 1) {
+      const token = tokens[i];
+      const motion = reduceMotion.matches ? 0 : token.speed;
+      token.y += motion;
+
+      if (token.y > height + 24) {
+        token.y = -24;
+      }
+
+      ctx.fillStyle = rgba(token.color, token.alpha);
+      ctx.fillText(token.text, token.x, token.y);
+    }
+
+    ctx.restore();
+  }
+
+  function drawPointer() {
+    if (!pointer.active || pointer.force < 0.01) return;
+
+    const radius = Math.min(width, height) * 0.20;
+    const gradient = ctx.createRadialGradient(pointer.x, pointer.y, radius * 0.02, pointer.x, pointer.y, radius);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 0.18)");
+    gradient.addColorStop(0.22, rgba(colors.blue, 0.16 * pointer.force));
+    gradient.addColorStop(0.48, rgba(colors.red, 0.11 * pointer.force));
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
+
+    ctx.save();
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(pointer.x, pointer.y, radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawVignette() {
+    const gradient = ctx.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 0.42)");
+    gradient.addColorStop(0.42, "rgba(255, 255, 255, 0.20)");
+    gradient.addColorStop(1, "rgba(255, 255, 255, 0.68)");
+
+    ctx.save();
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
     ctx.restore();
   }
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#f8fbff";
     ctx.fillRect(0, 0, width, height);
 
-    for (let i = 0; i < plumes.length; i += 1) {
-      const plume = plumes[i];
-      const distance = pointer
-        ? Math.hypot(pointer.x - plume.x, pointer.y - plume.y)
-        : Infinity;
-      const boost = Math.max(0, 1 - distance / 360) * pointerFade;
-      drawPlume(plume, boost);
-    }
-
-    drawPointerBloom();
+    drawGrid();
+    drawInstitutionRibbons();
+    updateNodes();
+    drawEdges();
+    drawNodes();
+    drawTokens();
+    drawPointer();
+    drawVignette();
   }
 
-  function animatePointerFade() {
-    frame = 0;
-    pointerFade *= 0.90;
+  function animate() {
+    tick += 1;
     draw();
 
-    if (pointerFade > 0.01) {
-      frame = window.requestAnimationFrame(animatePointerFade);
+    if (!reduceMotion.matches) {
+      frameId = window.requestAnimationFrame(animate);
+    }
+  }
+
+  function restartAnimation() {
+    window.cancelAnimationFrame(frameId);
+    tick = 0;
+    draw();
+
+    if (!reduceMotion.matches) {
+      frameId = window.requestAnimationFrame(animate);
     }
   }
 
@@ -179,20 +359,20 @@
   window.addEventListener("pointermove", function (event) {
     pointer = {
       x: event.clientX,
-      y: event.clientY
+      y: event.clientY,
+      active: true,
+      force: 1
     };
-    pointerFade = 1;
-    draw();
-
-    if (!frame && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      frame = window.requestAnimationFrame(animatePointerFade);
-    }
   }, { passive: true });
 
   window.addEventListener("pointerleave", function () {
-    pointerFade = 0;
-    draw();
+    pointer.active = false;
   });
 
+  if (reduceMotion.addEventListener) {
+    reduceMotion.addEventListener("change", restartAnimation);
+  }
+
   resize();
+  restartAnimation();
 }());
