@@ -19,13 +19,13 @@ layout: default
           <i class="fas fa-file-alt"></i>
           Publications
         </a>
-        <a class="home-action" href="{{ '/cv/' | relative_url }}">
-          <i class="fas fa-id-card"></i>
-          CV
-        </a>
         <a class="home-action" href="{{ '/teaching/' | relative_url }}">
           <i class="fas fa-chalkboard-teacher"></i>
           Teaching
+        </a>
+        <a class="home-action" href="{{ '/cv/' | relative_url }}">
+          <i class="fas fa-id-card"></i>
+          CV
         </a>
       </div>
 
@@ -86,6 +86,12 @@ layout: default
   {% if page.selected_papers -%}
   <!-- Selected papers -->
   {%- include selected_papers.html %}
+  {%- endif %}
+
+  {%- if page.social %}
+  <div class="home-social home-social--bottom" aria-label="Contact and profile links">
+    {% include social.html %}
+  </div>
   {%- endif %}
 
 </div>

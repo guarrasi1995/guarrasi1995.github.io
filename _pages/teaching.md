@@ -4,7 +4,7 @@ permalink: /teaching/
 title: teaching
 description: Teaching activities and course assignments.
 nav: true
-nav_order: 2
+nav_order: 3
 ---
 
 <h3 class="mt-4">National Tenure</h3>
